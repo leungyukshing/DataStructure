@@ -151,7 +151,7 @@ int BinaryTree<Entry>::recursive_leaf_count(Binary_node<Entry> *sub_root) const 
   if (sub_root == NULL)
     return 0;
   // 若本身不为空，且无左右子树，即自己为叶子节点，计数
-  if (sub_root->left)
+  if (sub_root->left == NULL && sub_root->right == NULL)
     return 1;
   else
     return recursive_leaf_count(sub_root->left) + recursive_leaf_count(sub_root->right);
