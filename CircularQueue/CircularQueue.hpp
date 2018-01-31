@@ -3,7 +3,7 @@
 #include "../ErrorCode/ErrorCode.hpp"
 
 #define MAXQUEUE 10
-//typedef double Queue_entry;
+
 template <class Queue_entry>
 class CircularQueue {
 public:
