@@ -2,6 +2,22 @@
 #include "LinkedQueue.hpp"
 #include "LinkedQueue.cpp"
 using namespace std;
+/*
+int main() {
+  LinkedQueue<int> q;
+  q.append(100);
+  q.append(20);
+  LinkedQueue<int> queue(q);
+  int num;
+  queue.retrieve(num);
+  cout << num << " ";
+  queue.serve();
+  queue.retrieve(num);
+  cout << num << " ";
+  queue.serve();
+  cout << endl;
+  return 0;
+}*/
 
 char get_command()
 {
@@ -103,6 +119,7 @@ bool do_command(char command, LinkedQueue<Queue_entry> &qu)
   }
   return true;
 }
+
 int main()
 {
   LinkedQueue<int> qu;

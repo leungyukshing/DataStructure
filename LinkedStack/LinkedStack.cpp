@@ -81,3 +81,36 @@ LinkedStack<Stack_entry>::~LinkedStack() {
 		pop();
 	}
 }
+
+template <class Stack_entry>
+LinkedStack<Stack_entry>::LinkedStack(const LinkedStack &original) {
+	Node<Stack_entry> *new_copy, *original_node = original.top_node;
+	if (original_node == NULL)
+		top_node = NULL;
+	else {
+		top_node = new_copy = new Node<Stack_entry>(original_node->entry);
+		while (original_node->next != NULL) {
+			original_node = original_node->next;
+			new_copy->next = new Node<Stack_entry>(original_node->entry);
+			new_copy = new_copy->next;
+		}
+	}
+}
+
+template <class Stack_entry>
+void LinkedStack<Stack_entry>::operator=(const LinkedStack &original) {
+	Node<Stack_entry> *new_top, *new_copy, *original_node = original.top_node;
+	if (original_node == NULL)
+		new_top = NULL;
+	else {
+		new_copy = new_top = new Node<Stack_entry>(original_node->entry);
+		while (original_node->next != NULL) {
+			original_node = original_node->next;
+			new_copy->next = new Node<Stack_entry>(original_node->entry);
+			new_copy = new_copy->next;
+		}
+	}
+	while (!empty()) // Clean out old Stack entries
+		pop();
+	top_node = new_top; // and replace them with new entries
+}

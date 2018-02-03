@@ -15,9 +15,9 @@ public:
   
   // safety feartures for linked structures
   ~LinkedQueue();
-  LinkedQueue(const LinkedQueue<Queue_entry> &original);
-  void operator = (const LinkedQueue<Queue_entry> &original);
-  bool operator == (const LinkedQueue<Queue_entry> &original);
+  LinkedQueue(const LinkedQueue &original);
+  void operator = (const LinkedQueue &original);
+  bool operator == (const LinkedQueue &original);
   void clear();
   
   // Extended methods
