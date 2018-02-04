@@ -54,6 +54,7 @@ int DoublyLinkedList<List_entry>::size() const { return count; }
 
 template <class List_entry>
 bool DoublyLinkedList<List_entry>::full() const { return false; }
+
 template <class List_entry>
 bool DoublyLinkedList<List_entry>::empty() const { return count == 0; }
 
@@ -77,15 +78,6 @@ void DoublyLinkedList<List_entry>::clear() {
 
 template <class List_entry>
 void DoublyLinkedList<List_entry>::traverse(void (*visit)(List_entry &)) {
-  /*for (int i = 0; i < count; i++) {
-    set_position(i);
-    
-    (*visit)(current->entry);
-    if (current->next != NULL) {
-      current = current->next;
-      current_position = i + 1;
-    }
-  }*/
   Node<List_entry> *to_visit = first;
   for (; to_visit; to_visit = to_visit->next) {
     (*visit)(to_visit->entry);
@@ -142,98 +134,14 @@ Error_code DoublyLinkedList<List_entry>::remove(int position, List_entry &x) {
   if (position == 0)
     first = current;
   return Success;
-  /*
-  x = current->entry;
-  //cout << "hello" << endl;
-  if (position == 0) {
-    if (count == 1) {
-      delete current;
-      current = NULL;
-      current_position = -1;
-      //cout << "finish" << endl;
-    }
-    else {
-      //cout << "two" << endl;
-      current->next->back = NULL;
-      Node<List_entry> *p = current;
-      current = current->next;
-      p->next = NULL;
-      delete p;
-      p = NULL;
-      current_position = 0;
-    }
-   
-  }
-  else if (position == count - 1) {
-    Node<List_entry> *p = current;
-    current->back->next = NULL;
-    current = current->back;
-    delete p;
-    current_position = position;
-  }
-  else {
-    //cout << "much" << endl;
-    Node<List_entry> *following, *preceding;
-    following = current->next;
-    preceding = current->back;
-    preceding->next = following;
-    following->back = preceding;
-    Node<List_entry> *p = current;
-    current = current->back;
-    delete p;
-    current_position = position - 1;
-  }
-  count--;
-  return Success;
-  */
 }
 
 template <class List_entry>
 Error_code DoublyLinkedList<List_entry>::insert(int position, const List_entry &x) {
-  /*
-  Node<List_entry> *new_node, *following, *preceding;
-  // position is out of range
-  if (position < 0 || position > count) {
-    return Range_over;
-  }
-  // insert an element on the head
-  if (position == 0) {
-    if (count == 0) {
-      following = NULL;
-    }
-    else {
-      set_position(0);
-      following = current;
-    }
-    preceding = NULL;
-  }
-  // insert an element on the middle of the list
-  else {
-    // set current pointer to locate the preceding position
-    set_position(position - 1);
-    preceding = current;
-    following = preceding->next;
-  }
-
-  // allocate space to the new element
-  new_node = new Node<List_entry>(x, preceding, following);
-  if (new_node == NULL)
-    return OverFlow;
-  if (preceding != NULL)
-    preceding->next = new_node;
-  if (following != NULL)
-    following->back = new_node;
-
-  current = new_node;
-  current_position = position;
-  count++;
-  return Success;
-  */
   Node<List_entry> *new_node, *following, *preceding;
   if (position < 0 || position > count)
     return Range_over;
   if (position == 0) {
-    cout << "1" << endl;
     if (count == 0)
       following = NULL;
     else {
@@ -247,7 +155,7 @@ Error_code DoublyLinkedList<List_entry>::insert(int position, const List_entry &
     preceding = current;
     following = preceding->next;
   }
-  cout << "2" << endl;
+  
   new_node = new Node<List_entry>(x, preceding, following);
   if (new_node == NULL)
     return OverFlow;
@@ -262,9 +170,9 @@ Error_code DoublyLinkedList<List_entry>::insert(int position, const List_entry &
   if (position == count)
     last = current;
   count++;
-  cout << "count = " << count << endl;
   return Success;
 }
+
 // The auxiliary function to locate list positions follows
 template <class List_entry>
 void DoublyLinkedList<List_entry>::set_position(int position) const {
