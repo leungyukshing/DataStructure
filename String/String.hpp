@@ -25,6 +25,7 @@ protected:
   int length;
 };
 
+// comparison operators
 bool operator==(const String &first, const String &second);
 bool operator>(const String &first, const String &second);
 bool operator<(const String &first, const String &second);
@@ -33,7 +34,7 @@ bool operator<=(const String &first, const String &second);
 bool operator!=(const String &first, const String &second);
 
 void strcat(String &add_to, const String &add_on);
-//void strcpy(String &copy, const String &original);
+void strcpy(String &copy, const String &original);
 void strncpy(String &copy, const String &original, int n);
 int strstr(const String &text, const String &target);
 String read_in(istream &input = cin);

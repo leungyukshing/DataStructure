@@ -6,9 +6,11 @@ String::String() {
   length = 0;
   entries = NULL;
 }
+
 String::~String() {
   clear();
 }
+
 // copy constructor
 String::String (const String &copy) {
   this->length = copy.length;
@@ -16,6 +18,7 @@ String::String (const String &copy) {
   strcpy(this->entries, copy.entries);
   this->entries[this->length] = '\0';
 }
+
 // conversion from C-string
 String::String (const char *copy) {
   length = strlen(copy);
@@ -23,6 +26,7 @@ String::String (const char *copy) {
   strcpy(entries, copy);
   entries[length] = '\0';
 }
+
 // conversion from List
 String::String (list<char> &copy) {
   length = copy.size();
@@ -43,8 +47,11 @@ void String::clear() {
   delete []entries;
   entries = NULL;
 }
-int  String::getLength() const { return length; }
+
+int String::getLength() const { return length; }
+
 void String::setLength(int l) { length = l; }
+
 void String::operator=(const String &copy) {
   if (*this == copy)
     return;
@@ -55,6 +62,7 @@ void String::operator=(const String &copy) {
   strcpy(this->entries, copy.entries);
   this->entries[this->length] = '\0';
 }
+
 // conversion to C-style string
 const char *String::c_str() const {
   return (const char*) entries;
@@ -63,18 +71,23 @@ const char *String::c_str() const {
 bool operator==(const String &first, const String &second) {
   return strcmp(first.c_str(), second.c_str()) == 0;
 }
+
 bool operator>(const String &first, const String &second) {
   return strcmp(first.c_str(), second.c_str()) > 0;
 }
+
 bool operator<(const String &first, const String &second) {
   return strcmp(first.c_str(), second.c_str()) < 0;
 }
+
 bool operator>=(const String &first, const String &second) {
   return strcmp(first.c_str(), second.c_str()) >= 0;
 }
+
 bool operator<=(const String &first, const String &second) {
   return strcmp(first.c_str(), second.c_str()) <= 0;
 }
+
 bool operator!=(const String &first, const String &second) {
   return strcmp(first.c_str(), second.c_str()) != 0;
 }
@@ -88,6 +101,7 @@ void strcat(String &add_to, const String &add_on) {
   add_to = copy;
   delete []copy;
 }
+
 void strcpy(String &copy, const String &original) {
   if (copy == original)
     return;
@@ -98,6 +112,7 @@ void strcpy(String &copy, const String &original) {
   copy = temp;
   delete []temp;
 }
+
 void strncpy(String &copy, const String &original, int n) {
   const char *coriginal = original.c_str();
   char *temp = new char[n + 1];
@@ -106,6 +121,7 @@ void strncpy(String &copy, const String &original, int n) {
   copy = temp;
   delete []temp;
 }
+
 int strstr(const String &text, const String &target) {
   const char *ctext = text.c_str();
   const char *ctarget = target.c_str();
@@ -114,6 +130,7 @@ int strstr(const String &text, const String &target) {
   
   return index;
 }
+
 String read_in(istream &input) {
   list<char> temp;
   int size = 0;
@@ -130,6 +147,7 @@ String read_in(istream &input) {
   String answer(temp);
   return answer;
 }
+
 String read_in(int &terminator, istream &input) {
   list<char> temp;
   int size = 0;
@@ -145,6 +163,7 @@ String read_in(int &terminator, istream &input) {
   String answer(temp);
   return answer;
 }
+
 void write(String &s) {
   cout << s.c_str() << endl;
 }
