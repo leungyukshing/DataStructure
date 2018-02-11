@@ -3,7 +3,7 @@
 using namespace std;
 
 template <class Record>
-SortableList<Record>::SortableList():DoublyLinkedList<Record>() {}
+SortableList<Record>::SortableList():List<Record>() {}
 
 template <class Record>
 void SortableList<Record>::insertion_sort() {

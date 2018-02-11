@@ -2,10 +2,6 @@
 #include <iostream>
 using namespace std;
 template <class Entry>
-BinaryTree<Entry>::BinaryTree() {
-  root = NULL;
-}
-template <class Entry>
 Binary_node<Entry>::Binary_node() {
   left = right = NULL;
 }
@@ -14,6 +10,11 @@ template <class Entry>
 Binary_node<Entry>::Binary_node(const Entry &x) {
   data = x;
   left = right = NULL;
+}
+
+template <class Entry>
+BinaryTree<Entry>::BinaryTree() {
+  root = NULL;
 }
 
 template <class Entry>
@@ -32,7 +33,10 @@ Binary_node<Entry>* BinaryTree<Entry>::recursive_copy(Binary_node<Entry> *sub_ro
 }
 
 template <class Entry>
-BinaryTree<Entry>& BinaryTree<Entry>::operator =(const BinaryTree<Entry> &original) {
+bool BinaryTree<Entry>::empty() const { return root == NULL; }
+
+template <class Entry>
+BinaryTree<Entry>& BinaryTree<Entry>::operator=(const BinaryTree<Entry> &original) {
   BinaryTree<Entry> new_copy(original);
   clear();
   root = new_copy.root;
@@ -200,6 +204,7 @@ int BinaryTree<Entry>::width() const {
   }
   return max_level;
 }
+
 // 插入
 template <class Entry>
 void BinaryTree<Entry>::insert(const Entry &x) {
@@ -215,7 +220,7 @@ void BinaryTree<Entry>::recursive_insert(Binary_node<Entry> *&sub_root, const En
   // 若左子树较高，则插入到右边
   else if (recursive_height(sub_root->right) < recursive_height(sub_root->left))
     recursive_insert(sub_root->right, x);
-  // 若右子树较高，则插入到左边
+  // 若右子树较高或等高，则插入到左边
   else
     recursive_insert(sub_root->left, x);
 }

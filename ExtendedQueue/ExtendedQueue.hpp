@@ -16,7 +16,7 @@ public:
   int size() const;
   void clear();
   Error_code serve_and_retrieve(Queue_entry &item);
-private:
+protected:
   int count;
   int front, rear;
   Queue_entry entry[MAXQUEUE];

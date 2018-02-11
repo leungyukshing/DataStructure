@@ -32,7 +32,7 @@ public:
   void insert(const Entry &);
 
   BinaryTree(const BinaryTree<Entry> &original);
-  BinaryTree & operator=(const BinaryTree<Entry> &original);
+  BinaryTree& operator=(const BinaryTree<Entry> &original);
   ~BinaryTree();
 protected:
   Binary_node<Entry> *root;  

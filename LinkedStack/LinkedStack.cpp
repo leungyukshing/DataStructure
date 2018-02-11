@@ -53,7 +53,6 @@ Error_code LinkedStack<Stack_entry>::pop() {
 template <class Stack_entry>
 Error_code LinkedStack<Stack_entry>::top(Stack_entry &item) const {
 	if (top_node == NULL) {
-		item = -1;
 		return UnderFlow;
 	}
 	else if (top_node->next == NULL) {

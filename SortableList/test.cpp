@@ -28,11 +28,12 @@ void write_entry(Record &c) {
 }
 
 int main() {
+  SortableList<int> the_list;
   int list_size = 10;
   Random dice;
   char word[9];
   word[8] = '\0';
-  SortableList<Record> the_list;
+  
   int i;
   for (i = 0; i < list_size; i++) {
     for (int j = 0; j < 8; j++) {
@@ -53,20 +54,24 @@ int main() {
   cout << "\nSorted list \n";
   the_list.traverse(write_entry);
   cout << "\n";
+  
   /*
-  list.insert(0, 26);
-  list.insert(0, 77);
-  list.insert(1, 83);
-  list.insert(2, 1);
-  list.insert(3, 89);
-  list.insert(4, 32);
-  list.insert(5, 45);
-  list.insert(6, 29);
-  list.insert(7, 17);
-  list.insert(8, 19);
-  list.insert(9, 100);
-  list.insertion_sort();
-  print(list);
+  the_list.insert(0, 26);
+  the_list.insert(0, 77);
+  the_list.insert(1, 83);
+  the_list.insert(2, 1);
+  the_list.insert(3, 89);
+  the_list.insert(4, 32);
+  the_list.insert(5, 45);
+  the_list.insert(6, 29);
+  the_list.insert(7, 17);
+  the_list.insert(8, 19);
+  the_list.insert(9, 100);
+  print(the_list);
+  cout << endl;
+  the_list.insertion_sort();
+  print(the_list);
+  /*
   list.selection_sort();
   list.quick_sort();
   */

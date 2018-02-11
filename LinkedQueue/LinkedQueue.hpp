@@ -23,7 +23,7 @@ public:
   // Extended methods
   int size() const;
   Error_code serve_and_retrieve(Queue_entry &item);
-private:
+protected:
   Node<Queue_entry> *front, *rear;
 };
 

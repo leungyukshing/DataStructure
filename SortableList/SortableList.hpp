@@ -1,7 +1,7 @@
 #ifndef SORTABLELIST_H
 #define SORTABLELIST_H
-#include "../DoublyLinkedList/DoublyLinkedList.hpp"
-#include "../DoublyLinkedList/DoublyLinkedList.cpp"
+#include "../List/List.hpp"
+#include "../List/List.cpp"
 #include "../LinkedQueue/LinkedQueue.hpp"
 #include "../LinkedQueue/LinkedQueue.cpp"
 #include "Key.hpp"
@@ -10,7 +10,7 @@
 const int max_chars = 28;
 
 template <class Record>
-class SortableList:public DoublyLinkedList<Record> {
+class SortableList: public List<Record> {
 public:
 	SortableList();
 	// Add prototypes for sorting methods here
